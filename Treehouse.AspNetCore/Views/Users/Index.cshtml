@@ -1,0 +1,52 @@
+﻿@model Treehouse.AspNetCore.Models.Questions
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@if (Model.Auth)
+{
+    <h2>YOU SIR, ARE LOGGED IN!</h2>
+}
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionsFromMongo.FirstOrDefault().text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionsFromMongo.FirstOrDefault().createdAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionsFromMongo.FirstOrDefault().username)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.QuestionsFromMongo) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.createdAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item._id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item._id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item._id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,26 @@
+﻿@model Treehouse.AspNetCore.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "UserLogin";
+}
+
+
+<h1>UserLogin</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div>
+                <label for="@Model.email"></label>
+                <input type="text" asp-for="email" placeholder="email" />
+            </div>
+            <div>
+                <label for="@Model.email"></label>
+                <input type="password" asp-for="password" placeholder="password" />
+            </div>
+
+            <input type="submit" value="Log in" />
+        </form>
+
+    </div>
+</div>

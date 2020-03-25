@@ -1,0 +1,67 @@
+﻿@model Treehouse.AspNetCore.ViewModels.PlayerViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="Players" asp-action="Index" method="get">
+    
+    
+    <p>
+        <select asp-for="TeamString" asp-items="Model.SelectTeams">
+            <option value="">All</option>
+        </select>
+
+        Title: <input type="text" name="searchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Player.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Player.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Player.Skill)
+            </th>
+            <th>
+               @Html.DisplayNameFor(model => model.Player.Team)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Players) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Skill)
+            </td>
+            <td>
+                <a asp-controller="Teams" asp-action="Details" asp-route-id="@item.Team.Id">@Html.DisplayFor(modelItem => item.Team.TeamName)</a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
