@@ -35,6 +35,7 @@ namespace Treehouse.AspNetCore.Services
 
 
         public void SetAuth(bool auth) => _repository.SetAuth(auth);
+        public void Login(bool auth, LoginResponseModel model) => _repository.Login(auth, model);
 
         public HttpResponseMessage GetQuestions()
         {

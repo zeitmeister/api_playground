@@ -41,8 +41,7 @@ namespace Treehouse.AspNetCore.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     var questions = JsonConvert.DeserializeObject<Questions>(await response.Content.ReadAsStringAsync());
-                    questions.Auth = true;
-                    
+                    questions.IsAuth = true;
                     return View(questions);
                 }
                 else
@@ -74,7 +73,7 @@ namespace Treehouse.AspNetCore.Controllers
                 
             if (response.IsSuccessStatusCode)
             {
-                _userService.SetAuth(true);
+                _userService.Login(true, loginResponseModel);
                 return RedirectToAction("Index");
             }
 

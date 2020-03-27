@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using Treehouse.AspNetCore.Models;
+using Treehouse.AspNetCore.ViewModels.AuthModel;
 
 namespace Treehouse.AspNetCore.Services
 {
@@ -8,6 +9,7 @@ namespace Treehouse.AspNetCore.Services
     {
         bool GetAuth();
         void SetAuth(bool auth);
+        void Login(bool auth, LoginResponseModel model);
 
         HttpResponseMessage GetQuestions();
 

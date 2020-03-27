@@ -33,6 +33,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">User questions</a>
                         </li>
+                        @if (Model != null && Model.IsAuth)
+                        {
+                            <li class="nav-link">
+                                <a class="nav-pills text-success" asp-controller="Users" asp-action="Logout">Log out</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

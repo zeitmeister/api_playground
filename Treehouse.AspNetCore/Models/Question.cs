@@ -9,14 +9,13 @@ using Treehouse.AspNetCore.ViewModels.AuthModel;
 namespace Treehouse.AspNetCore.Models
 {
 
-    public class Questions
+    public class Questions : IBaseAuthModel
     {
         [JsonProperty("questions")]
         public Question[] QuestionsFromMongo { get; set; }
-        public bool Auth { get; set; }
         public User user { get; set; }
-
-
+        public bool IsAuth { get; set; }
+        public string Token { get; set ; }
     }
 
 
