@@ -15,7 +15,6 @@ namespace Treehouse.AspNetCore.Repositories
         public bool GetAuth();
         public HttpResponseMessage GetQuestions();
 
-        public void SetAuths(LoginResponseModel model);
     }
     public class UserRepository : IUserRepository
     {
@@ -36,11 +35,6 @@ namespace Treehouse.AspNetCore.Repositories
         public void SetAuth(bool auth)
         {
             _model.IsAuth = auth;
-        }
-
-        public void SetAuths(LoginResponseModel model)
-        {
-            _model.Token = model.token;
         }
 
         public HttpResponseMessage GetQuestions()

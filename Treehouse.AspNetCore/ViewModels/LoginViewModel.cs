@@ -8,13 +8,15 @@ using Treehouse.AspNetCore.ViewModels.AuthModel;
 
 namespace Treehouse.AspNetCore.ViewModels
 {
-    public class LoginViewModel 
+    public class LoginViewModel : IBaseAuthModel 
     {
         public string email { get; set; }
         [DataType(DataType.Password)]
         public string password { get; set; }
 
-        public bool IsAuth => default;
+
+        public string Token { get ; set; }
+        public bool IsAuth { get; set; }
 
         public void SetAuth(bool value)
         {

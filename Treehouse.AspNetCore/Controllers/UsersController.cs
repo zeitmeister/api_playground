@@ -75,7 +75,6 @@ namespace Treehouse.AspNetCore.Controllers
             if (response.IsSuccessStatusCode)
             {
                 _userService.SetAuth(true);
-                _userService.SetAuths(loginResponseModel);
                 return RedirectToAction("Index");
             }
 

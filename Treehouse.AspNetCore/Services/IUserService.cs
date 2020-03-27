@@ -11,8 +11,6 @@ namespace Treehouse.AspNetCore.Services
 
         HttpResponseMessage GetQuestions();
 
-        void SetAuths(LoginResponseModel model);
-
 
     }
 
