@@ -42,5 +42,9 @@ namespace Treehouse.AspNetCore.Services
             return _repository.GetQuestions();
         }
 
+        public bool Logout()
+        {
+            return _repository.Logout();
+        }
     }
 }

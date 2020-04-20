@@ -62,6 +62,12 @@ namespace Treehouse.AspNetCore.Controllers
             return View(loginView);
         }
 
+        public async Task<IActionResult> LogOut()
+        {
+            _userService.Logout();
+            return RedirectToAction("Index", "Home");
+        }
+
         [HttpPost]
         public async Task<IActionResult> UserLogin(LoginViewModel user)
         {

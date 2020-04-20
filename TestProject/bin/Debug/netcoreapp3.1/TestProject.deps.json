@@ -2285,7 +2285,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.2",
           "Microsoft.Extensions.Logging.Debug": "3.1.2",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.1",
-          "MongoDB.Driver": "2.10.0"
+          "MongoDB.Driver": "2.10.0",
+          "RestApiWrapper": "1.0.0"
         },
         "runtime": {
           "Treehouse.AspNetCore.dll": {}

@@ -14,6 +14,8 @@ namespace Treehouse.AspNetCore.Repositories
         public void SetAuth(bool auth);
         public void Login(bool auth, LoginResponseModel model);
         public bool GetAuth();
+
+        public bool Logout();
         public HttpResponseMessage GetQuestions();
 
     }
@@ -51,6 +53,19 @@ namespace Treehouse.AspNetCore.Repositories
         {
             SetAuth(auth);
             _model.Token = model.token;
+        }
+
+        public bool Logout()
+        {
+            var response = _restApi.PostRequest("https://sleepy-falls-59530.herokuapp.com/questions/logout", null, "Bearer", _model.Token);
+            if (response.Result.IsSuccessStatusCode)
+            {
+                var result = response.Result.Content.ReadAsStringAsync();
+                return true;
+            }
+                
+            return false;
+
         }
     }
 }
