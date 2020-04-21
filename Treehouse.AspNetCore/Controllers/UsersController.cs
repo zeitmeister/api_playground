@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Threading.Tasks;
+using Castle.Core.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -41,7 +42,7 @@ namespace Treehouse.AspNetCore.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     var questions = JsonConvert.DeserializeObject<Questions>(await response.Content.ReadAsStringAsync());
-                    questions.IsAuth = true;
+                    questions.IsAuth = _userService.GetAuth();
                     return View(questions);
                 }
                 else
@@ -76,7 +77,7 @@ namespace Treehouse.AspNetCore.Controllers
             var responseBody = await response.Content.ReadAsStringAsync();
 
             var loginResponseModel = JsonConvert.DeserializeObject<LoginResponseModel>(responseBody);
-                
+
             if (response.IsSuccessStatusCode)
             {
                 _userService.Login(true, loginResponseModel);
@@ -85,6 +86,18 @@ namespace Treehouse.AspNetCore.Controllers
 
             return NotFound();
 
+        }
+
+        public async Task<IActionResult> Question(string questionNr)
+        {
+            if (questionNr.IsNullOrEmpty())
+            {
+                return NotFound();
+            }
+
+            var questionModel = _userService.GetSpecificQuestion(questionNr);
+            questionModel.IsAuth = _userService.GetAuth();
+            return View("~/Views/Questions/Question.cshtml", questionModel);
         }
 
         // GET: Users/Details/5

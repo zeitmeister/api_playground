@@ -1,0 +1,65 @@
+﻿@model Treehouse.AspNetCore.Models.QuestionModel
+@{
+    ViewData["Title"] = "Question";
+}
+
+<h1>Question</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+                @Html.DisplayNameFor(model => model.text)
+
+
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.createdAt)
+
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.username)
+
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => @Model.text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => @Model.createdAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => @Model.username)
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+<h2>Answers</h2>
+<table class="table">
+    <tbody>
+        @{int index = 1; } 
+        @foreach (var answer in @Model.answers)
+        {
+            <tr>
+                <td>
+                    @index
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => answer.text)
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>
+

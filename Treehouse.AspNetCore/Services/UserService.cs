@@ -46,5 +46,10 @@ namespace Treehouse.AspNetCore.Services
         {
             return _repository.Logout();
         }
+
+        public QuestionModel GetSpecificQuestion(string questionNr)
+        {
+            return new QuestionModel(_repository.GetSpecificQuestion(questionNr));
+        }
     }
 }

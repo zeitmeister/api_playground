@@ -13,8 +13,7 @@ namespace Treehouse.AspNetCore.Services
         bool Logout();
 
         HttpResponseMessage GetQuestions();
-
-
+        QuestionModel GetSpecificQuestion(string questionNr);
     }
 
     public interface IMongoUserService

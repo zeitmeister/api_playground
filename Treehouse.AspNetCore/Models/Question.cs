@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Treehouse.AspNetCore.Repositories;
 using Treehouse.AspNetCore.ViewModels.AuthModel;
 
 namespace Treehouse.AspNetCore.Models
@@ -35,9 +36,33 @@ namespace Treehouse.AspNetCore.Models
         public DateTime createdAt { get; set; }
         public Answer[] answers { get; set; }
         public int __v { get; set; }
-        public void SetAuth(bool value)
+
+
+    }
+
+    public class QuestionModel : IBaseAuthModel
+    {
+        private readonly IQuestionDtoResult _dto;
+        public string _id => _dto.Id;
+
+        [DisplayName("Question")]
+        public string text => _dto.Text;
+        public string userId => _dto.UserId;
+
+        [DisplayName("Asked by")]
+        public string username => _dto.Username;
+
+        [DisplayName("Question asked at")]
+        public DateTime createdAt => _dto.CreatedAt;
+        public Answer[] answers => _dto.Answers;
+        public int __v => _dto.__v;
+
+        public bool IsAuth { get; set; }
+        public string Token { get; set; }
+
+        public QuestionModel(IQuestionDtoResult dto)
         {
-            throw new NotImplementedException();
+            _dto = dto;
         }
     }
 
