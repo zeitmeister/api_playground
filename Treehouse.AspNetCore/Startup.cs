@@ -44,7 +44,9 @@ namespace Treehouse.AspNetCore
                 sp.GetRequiredService<IOptions<UserDatabaseSettings>>().Value);
             services.AddSingleton<IBaseAuthModel, BaseAuthModel>();
             services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IQuestionRepository, QuestionRespository>();
             services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<IQuestionService, QuestionService>();
             services.AddHostedService<TimedUpdateTeamPointsService>();
             services.AddScoped<ITimedUpdateService, TimedUpdateTeamPointsService>();
             services.AddSingleton<IRestApiRequesterService, RestApiRequesterService>();

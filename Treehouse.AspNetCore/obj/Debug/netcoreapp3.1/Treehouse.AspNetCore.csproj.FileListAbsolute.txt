@@ -181,3 +181,4 @@ C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3
 C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BusyIndicatorPartial.cshtml.g.cs
 C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoggedIn.cshtml.g.cs
 C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Questions\Question.cshtml.g.cs
+C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Questions\Index.cshtml.g.cs

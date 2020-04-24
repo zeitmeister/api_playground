@@ -11,9 +11,6 @@ namespace Treehouse.AspNetCore.Services
         void SetAuth(bool auth);
         void Login(bool auth, LoginResponseModel model);
         bool Logout();
-
-        HttpResponseMessage GetQuestions();
-        QuestionModel GetSpecificQuestion(string questionNr);
     }
 
     public interface IMongoUserService

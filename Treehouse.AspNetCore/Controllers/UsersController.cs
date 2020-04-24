@@ -22,7 +22,6 @@ namespace Treehouse.AspNetCore.Controllers
         private readonly PlayerContext _context;
         private readonly IUserService _userService;
         private readonly IRestApiRequesterService _restApiRequester;
-        private HttpClient _httpClient;
         public UsersController(PlayerContext context, IUserService userService, IRestApiRequesterService restApiRequster)
         {
             _context = context;
@@ -31,30 +30,6 @@ namespace Treehouse.AspNetCore.Controllers
         }
 
         // GET: Users
-        public async Task<IActionResult> Index()
-        {
-            if (_userService.GetAuth())
-            {
-
-                //TODO Fixa så att loginresponsemodel ej blir null när man trycker på user questions länken på sida.
-                //Kanske jobba mer på att få en model att fungera som UserServicen kan använda. Där skulle man ju också kunna lagra token.
-                var response = _userService.GetQuestions();
-                if (response.IsSuccessStatusCode)
-                {
-                    var questions = JsonConvert.DeserializeObject<Questions>(await response.Content.ReadAsStringAsync());
-                    questions.IsAuth = _userService.GetAuth();
-                    return View(questions);
-                }
-                else
-                {
-                    return RedirectToAction("UserLogin");
-                }
-
-            }
-            // Hämtar användarna från ml-databasen
-            return RedirectToAction("UserLogin");
-
-        }
 
 
         public async Task<IActionResult> UserLogin()
@@ -81,24 +56,14 @@ namespace Treehouse.AspNetCore.Controllers
             if (response.IsSuccessStatusCode)
             {
                 _userService.Login(true, loginResponseModel);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Question");
             }
 
             return NotFound();
 
         }
 
-        public async Task<IActionResult> Question(string questionNr)
-        {
-            if (questionNr.IsNullOrEmpty())
-            {
-                return NotFound();
-            }
-
-            var questionModel = _userService.GetSpecificQuestion(questionNr);
-            questionModel.IsAuth = _userService.GetAuth();
-            return View("~/Views/Questions/Question.cshtml", questionModel);
-        }
+     
 
         // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
