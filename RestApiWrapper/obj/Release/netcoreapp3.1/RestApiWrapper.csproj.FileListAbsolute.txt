@@ -1,0 +1,9 @@
+C:\Users\KM\source\repos\solar_system\RestApiWrapper\bin\Release\netcoreapp3.1\RestApiWrapper.deps.json
+C:\Users\KM\source\repos\solar_system\RestApiWrapper\bin\Release\netcoreapp3.1\RestApiWrapper.dll
+C:\Users\KM\source\repos\solar_system\RestApiWrapper\bin\Release\netcoreapp3.1\RestApiWrapper.pdb
+C:\Users\KM\source\repos\solar_system\RestApiWrapper\obj\Release\netcoreapp3.1\RestApiWrapper.csprojAssemblyReference.cache
+C:\Users\KM\source\repos\solar_system\RestApiWrapper\obj\Release\netcoreapp3.1\RestApiWrapper.csproj.CoreCompileInputs.cache
+C:\Users\KM\source\repos\solar_system\RestApiWrapper\obj\Release\netcoreapp3.1\RestApiWrapper.AssemblyInfoInputs.cache
+C:\Users\KM\source\repos\solar_system\RestApiWrapper\obj\Release\netcoreapp3.1\RestApiWrapper.AssemblyInfo.cs
+C:\Users\KM\source\repos\solar_system\RestApiWrapper\obj\Release\netcoreapp3.1\RestApiWrapper.dll
+C:\Users\KM\source\repos\solar_system\RestApiWrapper\obj\Release\netcoreapp3.1\RestApiWrapper.pdb

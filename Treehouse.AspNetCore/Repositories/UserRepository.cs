@@ -7,18 +7,20 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Treehouse.AspNetCore.Models;
 using Treehouse.AspNetCore.ViewModels.AuthModel;
+using static Treehouse.AspNetCore.Models.UserModel;
 
 namespace Treehouse.AspNetCore.Repositories
 {
     public interface IUserRepository
     {
         public void SetAuth(bool auth);
-        public void Login(bool auth, LoginResponseModel model);
+        public void Login(bool auth, User model);
         public bool GetAuth();
 
         public bool Logout();
         public HttpResponseMessage GetQuestions();
         IQuestionDtoResult GetSpecificQuestion(string questionNr);
+        UserModel GetProfile();
     }
     public class UserRepository : IUserRepository
     {
@@ -49,11 +51,12 @@ namespace Treehouse.AspNetCore.Repositories
         }
 
 
-
-        public void Login(bool auth, LoginResponseModel model)
+        //TODO : set a dto with the username and password
+        public void Login(bool auth, User model)
         {
+            var response = _restApi.PostRequest("https://sleepy-falls-59530.herokuapp.com/questions/login", model);
             SetAuth(auth);
-            _model.Token = model.token;
+            _model.Token = model.;
         }
 
         public bool Logout()
@@ -81,6 +84,18 @@ namespace Treehouse.AspNetCore.Repositories
                 return dtoResult;
             }
             return dtoResult;
+        }
+
+        public UserModel GetProfile()
+        {
+            UserModel user = null;
+            var response = _restApi.GetRequest($"https://sleepy-falls-59530.herokuapp.com/questions/user", "Bearer", _model.Token);
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                user = JsonConvert.DeserializeObject<UserModel>(result);
+            }
+            return user;
         }
     }
 }

@@ -46,18 +46,43 @@
 </table>
 <h2>Answers</h2>
 <table class="table">
+    <thead>
+        <tr>
+            <th>
+                Rank
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.answers.FirstOrDefault().answeredBy)
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.answers.FirstOrDefault().votes)
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.text)
+            </th>
+        </tr>
+    </thead>
     <tbody>
-        @{int index = 1; } 
+        @{int index = 1; }
         @foreach (var answer in @Model.answers)
         {
-            <tr>
-                <td>
-                    @index
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => answer.text)
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @index
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => answer.answeredBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelitem => answer.votes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => answer.text)
+            </td>
+        </tr>
             index++;
         }
     </tbody>

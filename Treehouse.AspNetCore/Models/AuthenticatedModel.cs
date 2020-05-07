@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Treehouse.AspNetCore.Models.UserModel;
 
 namespace Treehouse.AspNetCore.Models
 {

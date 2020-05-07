@@ -8,8 +8,6 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Treehouse.AspNetCore.ViewModels.AuthModel;
-using static Treehouse.AspNetCore.Models.UsersFromDb;
-using static Treehouse.AspNetCore.Models.AuthUser;
 using Treehouse.AspNetCore.Models;
 
 namespace Treehouse.AspNetCore.Services

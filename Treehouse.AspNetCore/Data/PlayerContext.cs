@@ -19,7 +19,6 @@ namespace Treehouse.AspNetCore.Data
         public DbSet<Division> Division { get; set; }
         //public DbSet<User> User { get; set; }
 
-        public DbSet<Token> Token { get; set; }
 
         public DbSet<Venue> Venue { get; set; }
         public DbSet<Conference> Conference { get; set; }
@@ -34,6 +33,5 @@ namespace Treehouse.AspNetCore.Data
                 .OnDelete(DeleteBehavior.Cascade);*/
         }
 
-         public DbSet<Treehouse.AspNetCore.Models.User> User { get; set; }
     }
 }

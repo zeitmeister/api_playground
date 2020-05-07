@@ -7,6 +7,7 @@ using Treehouse.AspNetCore.Models;
 using Treehouse.AspNetCore.ViewModels.AuthModel;
 using Treehouse.AspNetCore.Repositories;
 using System.Net.Http;
+using static Treehouse.AspNetCore.Models.UserModel;
 
 namespace Treehouse.AspNetCore.Services
 {
@@ -42,6 +43,11 @@ namespace Treehouse.AspNetCore.Services
         public bool Logout()
         {
             return _repository.Logout();
+        }
+
+        public UserModel GetProfile()
+        {
+           return _repository.GetProfile();
         }
     }
 }

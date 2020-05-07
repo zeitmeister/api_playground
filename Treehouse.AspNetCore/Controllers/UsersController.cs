@@ -14,6 +14,7 @@ using Treehouse.AspNetCore.Data;
 using Treehouse.AspNetCore.Models;
 using Treehouse.AspNetCore.Services;
 using Treehouse.AspNetCore.ViewModels;
+using static Treehouse.AspNetCore.Models.UserModel;
 
 namespace Treehouse.AspNetCore.Controllers
 {
@@ -51,7 +52,7 @@ namespace Treehouse.AspNetCore.Controllers
 
             var responseBody = await response.Content.ReadAsStringAsync();
 
-            var loginResponseModel = JsonConvert.DeserializeObject<LoginResponseModel>(responseBody);
+            var loginResponseModel = JsonConvert.DeserializeObject<User>(responseBody);
 
             if (response.IsSuccessStatusCode)
             {
@@ -61,6 +62,23 @@ namespace Treehouse.AspNetCore.Controllers
 
             return NotFound();
 
+        }
+
+        [HttpGet]
+
+        public async Task<IActionResult> Profile()
+        {
+            var user = _userService.GetProfile();
+            if (user != null)
+            {
+                user.IsAuth = _userService.GetAuth();
+                
+                return View("~/Views/Users/User.cshtml", user);
+
+            } else
+            {
+                return RedirectToAction("Index", "Question");
+            }
         }
 
      
@@ -73,14 +91,14 @@ namespace Treehouse.AspNetCore.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
-                .FirstOrDefaultAsync(m => m.Id == id.ToString());
-            if (user == null)
-            {
-                return NotFound();
-            }
+            //var user = await _context.User
+            //    .FirstOrDefaultAsync(m => m.Id == id.ToString());
+            //if (user == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return View(user);
+            return View();
         }
 
         // GET: Users/Create
@@ -94,7 +112,7 @@ namespace Treehouse.AspNetCore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,isVerified,MongoNr,username,email,password,__v")] User user)
+        public async Task<IActionResult> Create([Bind("Id,isVerified,MongoNr,username,email,password,__v")] UserModel user)
         {
             if (ModelState.IsValid)
             {
@@ -113,12 +131,12 @@ namespace Treehouse.AspNetCore.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            return View(user);
+            //var user = await _context.User.FindAsync(id);
+            //if (user == null)
+            //{
+            //    return NotFound();
+            //}
+            return View();
         }
 
         // POST: Users/Edit/5
@@ -128,7 +146,7 @@ namespace Treehouse.AspNetCore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,isVerified,MongoNr,username,email,password,__v")] User user)
         {
-            if (id.ToString() != user.Id)
+            if (id.ToString() != user.Id.ToString())
             {
                 return NotFound();
             }
@@ -142,14 +160,9 @@ namespace Treehouse.AspNetCore.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.Id.ToString()))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
+
                         throw;
-                    }
+
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -164,14 +177,14 @@ namespace Treehouse.AspNetCore.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
-                .FirstOrDefaultAsync(m => m.Id == id.ToString());
-            if (user == null)
-            {
-                return NotFound();
-            }
+            //var user = await _context.User
+            //    .FirstOrDefaultAsync(m => m.Id == id.ToString());
+            //if (user == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return View(user);
+            return View();
         }
 
         // POST: Users/Delete/5
@@ -179,15 +192,15 @@ namespace Treehouse.AspNetCore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var user = await _context.User.FindAsync(id);
-            _context.User.Remove(user);
-            await _context.SaveChangesAsync();
+            //var user = await _context.User.FindAsync(id);
+            //_context.User.Remove(user);
+            //await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(string id)
-        {
-            return _context.User.Any(e => e.Id == id.ToString());
-        }
+        //private bool UserExists(string id)
+        //{
+        //    return _context.User.Any(e => e.Id == id.ToString());
+        //}
     }
 }

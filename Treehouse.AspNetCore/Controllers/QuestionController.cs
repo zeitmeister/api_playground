@@ -36,12 +36,12 @@ namespace Treehouse.AspNetCore.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("UserLogin","UsersController");
+                    return RedirectToAction("UserLogin","Users");
                 }
 
             }
             // Hämtar användarna från ml-databasen
-            return RedirectToAction("UserLogin");
+            return RedirectToAction("UserLogin", "Users");
         }
 
         public async Task<IActionResult> Question(string questionNr)

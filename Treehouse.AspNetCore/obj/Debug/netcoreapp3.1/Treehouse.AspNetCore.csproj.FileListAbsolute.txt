@@ -144,10 +144,6 @@ C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3
 C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Teams\Details.cshtml.g.cs
 C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Teams\Edit.cshtml.g.cs
 C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Teams\Index.cshtml.g.cs
-C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Create.cshtml.g.cs
-C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Delete.cshtml.g.cs
-C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Details.cshtml.g.cs
-C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Edit.cshtml.g.cs
 C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Index.cshtml.g.cs
 C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Users\UserLogin.cshtml.g.cs
 C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
@@ -182,3 +178,4 @@ C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3
 C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoggedIn.cshtml.g.cs
 C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Questions\Question.cshtml.g.cs
 C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Questions\Index.cshtml.g.cs
+C:\Users\KM\source\repos\solar_system\Treehouse.AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Users\User.cshtml.g.cs

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Treehouse.AspNetCore.Repositories;
 using Treehouse.AspNetCore.ViewModels.AuthModel;
+using static Treehouse.AspNetCore.Models.UserModel;
 
 namespace Treehouse.AspNetCore.Models
 {
