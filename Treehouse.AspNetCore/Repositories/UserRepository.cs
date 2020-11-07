@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Treehouse.AspNetCore.Controllers;
 using Treehouse.AspNetCore.Models;
 using Treehouse.AspNetCore.ViewModels.AuthModel;
 using static Treehouse.AspNetCore.Models.UserModel;
@@ -14,7 +15,7 @@ namespace Treehouse.AspNetCore.Repositories
     public interface IUserRepository
     {
         public void SetAuth(bool auth);
-        public void Login(bool auth, User model);
+        public bool Login(LoginUser user);
         public bool GetAuth();
 
         public bool Logout();
@@ -52,11 +53,19 @@ namespace Treehouse.AspNetCore.Repositories
 
 
         //TODO : set a dto with the username and password
-        public void Login(bool auth, User model)
+        public bool Login(LoginUser model)
         {
             var response = _restApi.PostRequest("https://sleepy-falls-59530.herokuapp.com/questions/login", model);
-            SetAuth(auth);
-            _model.Token = model.;
+            SetAuth(response.Result.IsSuccessStatusCode);
+            if (GetAuth())
+            {
+                var responseBody = response.Result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+
+                var loginResponseModel = JsonConvert.DeserializeObject<UserModel>(responseBody);
+                _model.Token = loginResponseModel.Token;
+                return GetAuth();
+            }
+            return GetAuth();
         }
 
         public bool Logout()
@@ -65,6 +74,7 @@ namespace Treehouse.AspNetCore.Repositories
             if (response.Result.IsSuccessStatusCode)
             {
                 var result = response.Result.Content.ReadAsStringAsync();
+                _model.Token = _model.Token.Remove(0);
                 return true;
             }
                 

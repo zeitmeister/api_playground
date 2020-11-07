@@ -48,19 +48,11 @@ namespace Treehouse.AspNetCore.Controllers
         [HttpPost]
         public async Task<IActionResult> UserLogin(LoginViewModel user)
         {
-            var response = await _restApiRequester.PostRequest("https://sleepy-falls-59530.herokuapp.com/questions/login", user);
-
-            var responseBody = await response.Content.ReadAsStringAsync();
-
-            var loginResponseModel = JsonConvert.DeserializeObject<User>(responseBody);
-
-            if (response.IsSuccessStatusCode)
-            {
-                _userService.Login(true, loginResponseModel);
+            var loginUser = new LoginUser(user);
+            if (_userService.Login(loginUser))
                 return RedirectToAction("Index", "Question");
-            }
-
-            return NotFound();
+            
+            return BadRequest();
 
         }
 

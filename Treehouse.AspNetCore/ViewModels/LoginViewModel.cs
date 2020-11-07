@@ -10,9 +10,9 @@ namespace Treehouse.AspNetCore.ViewModels
 {
     public class LoginViewModel : IBaseAuthModel 
     {
-        public string email { get; set; }
+        public string Email { get; set; }
         [DataType(DataType.Password)]
-        public string password { get; set; }
+        public string Password { get; set; }
 
 
         public string Token { get ; set; }

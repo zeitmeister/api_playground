@@ -8,6 +8,7 @@ using Treehouse.AspNetCore.ViewModels.AuthModel;
 using Treehouse.AspNetCore.Repositories;
 using System.Net.Http;
 using static Treehouse.AspNetCore.Models.UserModel;
+using Treehouse.AspNetCore.Controllers;
 
 namespace Treehouse.AspNetCore.Services
 {
@@ -36,7 +37,7 @@ namespace Treehouse.AspNetCore.Services
 
 
         public void SetAuth(bool auth) => _repository.SetAuth(auth);
-        public void Login(bool auth, LoginResponseModel model) => _repository.Login(auth, model);
+        public bool Login(LoginUser model) => _repository.Login(model);
 
         
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Treehouse.AspNetCore.Controllers;
 using Treehouse.AspNetCore.Models;
 using Treehouse.AspNetCore.ViewModels.AuthModel;
 using static Treehouse.AspNetCore.Models.UserModel;
@@ -11,7 +12,7 @@ namespace Treehouse.AspNetCore.Services
     {
         bool GetAuth();
         void SetAuth(bool auth);
-        void Login(bool auth, User model);
+        bool Login(LoginUser user);
         bool Logout();
         UserModel GetProfile();
     }
